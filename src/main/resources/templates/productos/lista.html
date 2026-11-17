@@ -15,7 +15,8 @@
       <td th:text="${p.precio}">0.00</td>
       <td>
         <a th:href="@{/productos/{id}(id=${p.id})}">Ver</a>
-        <form th:action="@{/productos/{id}/eliminar(id=${p.id})}" method="post" class="en-linea">
+        <form sec:authorize="hasRole('ADMIN')"
+              th:action="@{/productos/{id}/eliminar(id=${p.id})}" method="post" class="en-linea">
           <button type="submit" class="peligro">Eliminar</button>
         </form>
       </td>

@@ -28,8 +28,10 @@ public class SecurityConfig {
             .logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
-            );
-
+            
+            )
+            .exceptionHandling(ex -> ex
+                .accessDeniedPage("/acceso-denegado"));
         return http.build();
     }
 }

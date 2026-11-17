@@ -2,6 +2,8 @@ package com.andesfresh.portal.controlador;
 
 import com.andesfresh.portal.modelo.Producto;
 import com.andesfresh.portal.servicio.ProductoService;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +42,7 @@ public class ProductoController {
         return "redirect:/productos";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{id}/eliminar")
     public String eliminar(@PathVariable Long id) {
         service.eliminar(id);
